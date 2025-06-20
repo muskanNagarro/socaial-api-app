@@ -1,4 +1,4 @@
-import { posts } from '../../data';
+import { posts } from '../data';
 
 export default function handler(req, res) {
   if (req.method === 'GET') {
