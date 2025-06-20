@@ -1,5 +1,5 @@
-import { posts, users } from './data';
-import allowCors from './utils/cors';
+import { posts, users } from '../data';
+import allowCors from '../utils/cors';
 
 function handler(req, res) {
   if (req.method === 'GET') {
