@@ -2,7 +2,15 @@ import { posts } from '../data';
 
 export default function handler(req, res) {
   if (req.method === 'GET') {
-    res.status(200).json({ posts });
+    const enrichedPosts = posts.map(post => {
+    const user = users.find(u => u.username === post.username);
+      return {
+        ...post,
+        avatar: user?.avatar || null,
+      };
+    });
+
+    res.status(200).json({ posts: enrichedPosts });
   } else if (req.method === 'POST') {
     const { username, image, caption } = req.body;
     const newPost = {
