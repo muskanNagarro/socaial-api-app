@@ -17,6 +17,7 @@ export const posts = [
     return {
       id: i + 1,
       username,
+      avatar, // ✅ add this line to include avatar in post
       image: `https://picsum.photos/seed/post${i + 1}/800/600`,
       caption: `${icon} Sample post #${i + 1} — Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac eros.`.slice(0, 100),
       likes: Math.floor(Math.random() * 30) + 1,
