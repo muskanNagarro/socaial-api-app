@@ -1,4 +1,4 @@
-import { posts, users } from './data';
+import { posts, users } from '../data';
 
 export default function handler(req, res) {
   if (req.method === 'GET') {
