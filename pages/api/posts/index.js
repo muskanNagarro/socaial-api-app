@@ -25,6 +25,15 @@ export default function handler(req, res) {
     };
     posts.unshift(newPost);
     res.status(201).json({ message: 'Post added', post: newPost });
+  } else if (req.method === 'PUT') {
+    const { username, avatar } = req.body;
+    const user = users.find(u => u.username === username);
+    if (user) {
+      user.avatar = avatar;
+      res.status(200).json({ message: 'Avatar updated', user });
+    } else {
+      res.status(404).json({ message: 'User not found' });
+    }
   } else {
     res.status(405).json({ message: 'Method not allowed' });
   }
