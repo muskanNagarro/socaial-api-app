@@ -1,6 +1,7 @@
 import { posts } from '../data';
+import allowCors from '../utils/cors';
 
-export default function handler(req, res) {
+function handler(req, res) {
   if (req.method === 'POST') {
     const { postId, user, text } = req.body;
     const post = posts.find(p => p.id === postId);
@@ -14,3 +15,5 @@ export default function handler(req, res) {
     res.status(405).json({ message: 'Method not allowed' });
   }
 }
+
+export default allowCors(handler);

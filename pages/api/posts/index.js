@@ -1,6 +1,7 @@
-import { posts, users } from '../data';
+import { posts, users } from './data';
+import allowCors from './utils/cors';
 
-export default function handler(req, res) {
+function handler(req, res) {
   if (req.method === 'GET') {
     const enrichedPosts = posts.map(post => {
       const user = users.find(u => u.username === post.username);
@@ -38,3 +39,5 @@ export default function handler(req, res) {
     res.status(405).json({ message: 'Method not allowed' });
   }
 }
+
+export default allowCors(handler);
